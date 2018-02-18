@@ -1,6 +1,9 @@
 #dictonary = {key:value, key2:value2}
 
-schedule = {0:"",1:"",2:"",3:"",4:"",5:"",6:"",7:"",8:"",9:"",10:"",11:"",12:"",13:"",14:"",15:"",16:"", 17:"",18:"",19:"",20:"",21:"",22:"",23:"",24:""}
+#schedule = {0:"",1:"",2:"",3:"",4:"",5:"",6:"",7:"",8:"",9:"",10:"",11:"",12:"",13:"",14:"",15:"",16:"", 17:"",18:"",19:"",20:"",21:"",22:"",23:"",24:""}
+schedule = []
+for hour in range(24):
+    schedule.append("")
 
 def activityPlanner(activity_name, amt_of_time, start_time): # Plans activity
     can_schedule = True
@@ -38,6 +41,7 @@ def eventPlanner(event_name, amt_of_time):
     if amt_of_time > count_empty:
         print("Do you have a time turner?")
     else:
+        pass
         
     
 # Main method
