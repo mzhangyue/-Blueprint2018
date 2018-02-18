@@ -52,6 +52,11 @@ def eventPlanner(event_name, amt_of_time):
             schedule[first_hour] = event_name
             first_hour += 1
         print(schedule)
+        
+def repeatedEvent(start_hour):
+    for e in schedule:
+        if e % 24 == start_hour:
+            activityPlanner()
     
 # Main method
 user_input = input("Do you want to enter an activity? y/n ")
