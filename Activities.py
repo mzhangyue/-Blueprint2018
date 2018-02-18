@@ -83,8 +83,17 @@ while user_input != "n":
     user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not
 
 print()
+
+'''
 for key in range(len(schedule)):
     if schedule[key]=="":
         print("For hour " + str(key) + " you have free time.")    
     else:
-        print("For hour " + str(key) + " you will be doing " + schedule[key])
+        print("For hour " + str(key) + " you will be doing " + schedule[key])'''
+
+for day in range(7):
+    for h in range(24):
+        if schedule[day*24+h] == "":
+            print("For day " + str(day+1) + " and hour " + str(h) + " you have free time.")
+        else:
+            print("For day "+str(day+1)+" and hour "+str(h)+" you will be doing "+schedule[day*24+h])
