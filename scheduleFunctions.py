@@ -22,17 +22,9 @@ def activityPlanner(activity_name, amt_of_time, start_time): # Plans activity
         if can_schedule != False:
             schedule[start_time] = activity_name
             start_time += 1
-    '''if schedule[start_time] != "":
-            print ("You can't do two activities at once.")
-    schedule[start_time] = activity_name
-    while amt_of_time > 1:
-        start_time +=  1
-        if schedule[start_time] != "":
-            print ("You can't do two activities at once.")
-            break
-        schedule[start_time] = activity_name
-        amt_of_time -= 1'''
+        amt_of_time -= 1
     print (schedule)
+        
 '''
 If not enough time then return fail
 Analayze how much time between activities and assign homework
@@ -67,7 +59,10 @@ while user_input != "n":
     activity_name = input("What is the name of your activity? ") # Sleep
     time = input("How long does it take in hours? ") # In hours
     start = input("When does it start? ") # Military time
-    activityPlanner(activity_name, int(time), int(start))
+    if time == None or start == None or activity_name == None:
+        activityPlanner(activity_name, int(time), int(start))
+    else:
+        print("Say something I'm giving up on you")
     #interval = input("How many days between each activity? ") # In days
     #activities.update({time: [activity_name, start, interval]})
  #   time_paradox_check(activities)
@@ -81,6 +76,9 @@ user_input = input("Do you have any homework? y/n ")
 while user_input != "n":
     assignment = input("Please say which assignment you need to add. ") #adding assignment name
     event_time = input("Please say how many hours the assignment takes. ") #setting the time it takes
-    eventPlanner(assignment, int(event_time))
+    if assignment == None or event_time == None:
+        eventPlanner(assignment, int(event_time))
+    else:
+        print("Say something I'm giving up on you")
     # homework.update({assignment: [homeworktime]})
     user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not 
