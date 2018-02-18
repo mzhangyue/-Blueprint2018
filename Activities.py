@@ -60,6 +60,7 @@ while user_input != "n":
     start = input("When does it start? ") # Military time
     time = input("How long does it take in hours? ") # In hours
     start_day = input("What day is it? ")
+    repeat = input("Does it repeat? y/n")
     if time.isdigit() and start.isdigit() and activity_name != "" and start_day.isdigit():
         activityPlanner(activity_name, int(time), int(start), int(start_day))
     else:
