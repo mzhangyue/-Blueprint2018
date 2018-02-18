@@ -23,7 +23,7 @@ def activityPlanner(activity_name, amt_of_time, start_time, start_day, schedule)
             schedule[start_time] = activity_name
             start_time += 1
         amt_of_time -= 1
-    print (schedule)
+    #print (schedule)
 
 def repeated_activityPlanner(activity_name, amt_of_time, start_time, start_day, repeat_interval, schedule): # Plans activity
     can_schedule = True
@@ -51,7 +51,7 @@ def repeated_activityPlanner(activity_name, amt_of_time, start_time, start_day, 
         amt_of_time = reset2
         can_schedule = True
         start_day += repeat_interval+1
-    print (schedule)
+    #print (schedule)
         
 '''
 If not enough time then return fail
@@ -87,7 +87,7 @@ def eventPlanner(event_name, amt_of_time, schedule):
                     schedule[count] = event_name
                     amt_of_time -= 1
                 count += 1
-        print(schedule)
+        #print(schedule)
 
 def due_eventPlanner(event_name, amt_of_time, due_date, schedule):
     count_empty = 0
@@ -119,7 +119,7 @@ def due_eventPlanner(event_name, amt_of_time, due_date, schedule):
                     schedule[count] = event_name
                     amt_of_time -= 1
                 count += 1
-        print(schedule)
+       # print(schedule)
         
 # Main method
 schedule = []
