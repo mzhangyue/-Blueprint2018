@@ -9,11 +9,11 @@ def activityPlanner(activity_name, amt_of_time, start_time, start_day): # Plans 
     can_schedule = True
     temp = start_time
     for hour in range(amt_of_time):
-        if temp >= len(schedule[0]):
+        if temp >= 24:
             print("There's only so many hours in the day")
             can_schedule = False
             break
-        elif schedule[temp] != "":
+        elif schedule[24*(start_day-1)+temp] != "":
             print ("You can't do two activities at once.")
             can_schedule = False
             break
