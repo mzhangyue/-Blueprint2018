@@ -24,6 +24,34 @@ def activityPlanner(activity_name, amt_of_time, start_time, start_day): # Plans 
             start_time += 1
         amt_of_time -= 1
     print (schedule)
+
+def repeated_activityPlanner(activity_name, amt_of_time, start_time, start_day, repeat_interval): # Plans activity
+    can_schedule = True
+    temp = start_time
+    reset1 = temp
+    reset2 = amt_of_time
+    while start_day < 7:
+        for hour in range(amt_of_time):
+            if temp >= 24:
+                print("There's only so many hours in the day")
+                can_schedule = False
+                break
+            elif schedule[24*(start_day-1)+temp] != "":
+                print ("You can't do two activities at once.")
+                can_schedule = False
+                break
+            temp += 1
+        for hour in range(amt_of_time):
+            if can_schedule != False:
+                schedule[24*(start_day-1)+start_time] = activity_name
+                start_time += 1
+            amt_of_time -= 1
+        temp = reset1
+        start_time = reset1
+        amt_of_time = reset2
+        can_schedule = True
+        start_day += repeat_interval+1
+    print (schedule)
         
 '''
 If not enough time then return fail
@@ -52,11 +80,6 @@ def eventPlanner(event_name, amt_of_time):
             schedule[first_hour] = event_name
             first_hour += 1
         print(schedule)
-        
-def repeatedEvent(start_hour):
-    for e in schedule:
-        if e % 24 == start_hour:
-            activityPlanner()
     
 # Main method
 user_input = input("Do you want to enter an activity? y/n ")
@@ -65,11 +88,18 @@ while user_input != "n":
     start = input("When does it start? ") # Military time
     time = input("How long does it take in hours? ") # In hours
     start_day = input("What day is it? ")
-    repeat = input("Does it repeat? y/n")
-    if time.isdigit() and start.isdigit() and activity_name != "" and start_day.isdigit():
-        activityPlanner(activity_name, int(time), int(start), int(start_day))
+    repeat = input("Does it repeat? y/n ")
+    if repeat == "n":   
+        if time.isdigit() and start.isdigit() and activity_name != "" and start_day.isdigit():
+            activityPlanner(activity_name, int(time), int(start), int(start_day))
+        else:
+            print("Say something I'm giving up on you")
     else:
-        print("Say something I'm giving up on you")
+        repeat_interval = input("How many days between when it repeats? ")
+        if time.isdigit() and start.isdigit() and activity_name != "" and start_day.isdigit() and repeat_interval.isdigit():
+            repeated_activityPlanner(activity_name, int(time), int(start), int(start_day), int(repeat_interval))
+        else:
+            print("Say something I'm giving up on you")
     #interval = input("How many days between each activity? ") # In days
     #activities.update({time: [activity_name, start, interval]})
  #   time_paradox_check(activities)
