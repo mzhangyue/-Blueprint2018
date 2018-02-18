@@ -1,7 +1,4 @@
-#dictonary = {key:value, key2:value2}
-
-#schedule = {0:"",1:"",2:"",3:"",4:"",5:"",6:"",7:"",8:"",9:"",10:"",11:"",12:"",13:"",14:"",15:"",16:"", 17:"",18:"",19:"",20:"",21:"",22:"",23:"",24:""}
-schedule = []
+chedule = []
 for hour in range(24):
     schedule.append("")
 
@@ -27,7 +24,7 @@ def activityPlanner(activity_name, amt_of_time, start_time): # Plans activity
         
 '''
 If not enough time then return fail
-Analayze how much time between activities and assign homework
+Analyze how much time between activities and assign homework
 '''
 def eventPlanner(event_name, amt_of_time):
     count_empty = 0
@@ -64,14 +61,8 @@ while user_input != "n":
     else:
         print("Say something I'm giving up on you")
     #interval = input("How many days between each activity? ") # In days
-    #activities.update({time: [activity_name, start, interval]})
- #   time_paradox_check(activities)
- #   activities.update({start: [activity_name, time]})
     user_input = input("Do you want to enter an activity? y/n ")
     
-'''for start_time in activities:
-    print(activities[start_time])'''
-
 user_input = input("Do you have any events to plan? y/n ")
 while user_input != "n":
     assignment = input("Please say which event you need to add. ") #adding assignment name
@@ -80,5 +71,11 @@ while user_input != "n":
         eventPlanner(assignment, int(event_time))
     else:
         print("Say something I'm giving up on you")
-    # homework.update({assignment: [homeworktime]})
-    user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not 
+    user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not
+
+for key in range(len(schedule)):
+    if schedule[key]=="":
+        print("For hour " + str(key) + " you have free time.")
+    else:
+        print("For hour " + str(key) + ": " + "you will be doing " + schedule[key])
+
