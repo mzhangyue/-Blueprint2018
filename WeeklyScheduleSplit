@@ -30,7 +30,7 @@ def repeated_activityPlanner(activity_name, amt_of_time, start_time, start_day, 
     temp = start_time
     reset1 = temp
     reset2 = amt_of_time
-    while start_day < 7:
+    while start_day <= 7:
         for hour in range(amt_of_time):
             if temp >= 24:
                 print("There's only so many hours in the day")
@@ -66,7 +66,7 @@ def eventPlanner(event_name, amt_of_time):
         print("Do you have a time turner?")
     else:
         count = 0
-        first_hour = 0
+        first_hour = -1
         for hour in range(len(schedule)):
             if schedule[hour] == "":
                 count += 1
@@ -76,9 +76,17 @@ def eventPlanner(event_name, amt_of_time):
                 first_hour = hour-amt_of_time+1
                 break
         # activityPlanner(event_name, amt_of_time, first_hour)
-        for i in range(amt_of_time):
-            schedule[first_hour] = event_name
-            first_hour += 1
+        if first_hour != -1:
+            for i in range(amt_of_time):
+                schedule[first_hour] = event_name
+                first_hour += 1
+        else:
+            count = 0
+            while amt_of_time > 0:
+                if schedule[count] == "":
+                    schedule[count] = event_name
+                    amt_of_time -= 1
+                count += 1
         print(schedule)
     
 # Main method
