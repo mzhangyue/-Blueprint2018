@@ -59,7 +59,7 @@ while user_input != "n":
     activity_name = input("What is the name of your activity? ") # Sleep
     time = input("How long does it take in hours? ") # In hours
     start = input("When does it start? ") # Military time
-    if time == None or start == None or activity_name == None:
+    if time.isdigit() and start.isdigit() and activity_name != "":
         activityPlanner(activity_name, int(time), int(start))
     else:
         print("Say something I'm giving up on you")
@@ -72,11 +72,11 @@ while user_input != "n":
 '''for start_time in activities:
     print(activities[start_time])'''
 
-user_input = input("Do you have any homework? y/n ")
+user_input = input("Do you have any events to plan? y/n ")
 while user_input != "n":
-    assignment = input("Please say which assignment you need to add. ") #adding assignment name
-    event_time = input("Please say how many hours the assignment takes. ") #setting the time it takes
-    if assignment == None or event_time == None:
+    assignment = input("Please say which event you need to add. ") #adding assignment name
+    event_time = input("Please say how many hours the event takes. ") #setting the time it takes
+    if assignment != "" and event_time.isdigit():
         eventPlanner(assignment, int(event_time))
     else:
         print("Say something I'm giving up on you")
