@@ -41,8 +41,21 @@ def eventPlanner(event_name, amt_of_time):
     if amt_of_time > count_empty:
         print("Do you have a time turner?")
     else:
-        pass
-        
+        count = 0
+        first_hour = 0
+        for hour in range(len(schedule)):
+            if schedule[hour] == "":
+                count += 1
+            else:
+                count = 0
+            if count == amt_of_time:
+                first_hour = hour-amt_of_time+1
+                break
+        # activityPlanner(event_name, amt_of_time, first_hour)
+        for i in range(amt_of_time):
+            schedule[first_hour] = event_name
+            first_hour += 1
+        print(schedule)
     
 # Main method
 user_input = input("Do you want to enter an activity? y/n ")
