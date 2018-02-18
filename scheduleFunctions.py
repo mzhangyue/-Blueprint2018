@@ -46,12 +46,11 @@ while user_input != "n":
 '''for start_time in activities:
     print(activities[start_time])'''
 
-homework = {} #dictionary
 user_input = input("Do you have any homework? y/n ")
 while user_input != "n":
     assignment = input("Please say which assignment you need to add. ") #adding assignment name
-    homeworktime = input("Please say how many hours the assignment takes. ") #setting the time it takes
-    eventPlanner(assignment, int(homeworktime))
+    event_time = input("Please say how many hours the assignment takes. ") #setting the time it takes
+    eventPlanner(assignment, int(event_time))
     # homework.update({assignment: [homeworktime]})
     user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not 
     
