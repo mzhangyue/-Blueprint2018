@@ -2,14 +2,14 @@
 
 #schedule = {0:"",1:"",2:"",3:"",4:"",5:"",6:"",7:"",8:"",9:"",10:"",11:"",12:"",13:"",14:"",15:"",16:"", 17:"",18:"",19:"",20:"",21:"",22:"",23:"",24:""}
 schedule = []
-for hour in range(24):
+for day in range(168):
     schedule.append("")
 
-def activityPlanner(activity_name, amt_of_time, start_time): # Plans activity
+def activityPlanner(activity_name, amt_of_time, start_time, start_day): # Plans activity
     can_schedule = True
     temp = start_time
     for hour in range(amt_of_time):
-        if temp >= len(schedule):
+        if temp >= len(schedule[0]):
             print("There's only so many hours in the day")
             can_schedule = False
             break
@@ -23,7 +23,7 @@ def activityPlanner(activity_name, amt_of_time, start_time): # Plans activity
             schedule[start_time] = activity_name
             start_time += 1
         amt_of_time -= 1
-    #print (schedule)
+    print (schedule)
         
 '''
 If not enough time then return fail
@@ -59,8 +59,9 @@ while user_input != "n":
     activity_name = input("What is the name of your activity? ") # Sleep
     time = input("How long does it take in hours? ") # In hours
     start = input("When does it start? ") # Military time
-    if time.isdigit() and start.isdigit() and activity_name != "":
-        activityPlanner(activity_name, int(time), int(start))
+    start_day = input("What day is it? ")
+    if time.isdigit() and start.isdigit() and activity_name != "" and start_day.isdigit():
+        activityPlanner(activity_name, int(time), int(start), int(start_day))
     else:
         print("Say something I'm giving up on you")
     #interval = input("How many days between each activity? ") # In days
