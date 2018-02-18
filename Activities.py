@@ -57,8 +57,8 @@ def eventPlanner(event_name, amt_of_time):
 user_input = input("Do you want to enter an activity? y/n ")
 while user_input != "n":
     activity_name = input("What is the name of your activity? ") # Sleep
-    time = input("How long does it take in hours? ") # In hours
     start = input("When does it start? ") # Military time
+    time = input("How long does it take in hours? ") # In hours
     start_day = input("What day is it? ")
     if time.isdigit() and start.isdigit() and activity_name != "" and start_day.isdigit():
         activityPlanner(activity_name, int(time), int(start), int(start_day))
