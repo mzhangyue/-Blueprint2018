@@ -9,7 +9,11 @@ def activityPlanner(activity_name, amt_of_time, start_time): # Plans activity
     can_schedule = True
     temp = start_time
     for hour in range(amt_of_time):
-        if schedule[temp] != "":
+        if temp >= len(schedule):
+            print("There's only so many hours in the day")
+            can_schedule = False
+            break
+        elif schedule[temp] != "":
             print ("You can't do two activities at once.")
             can_schedule = False
             break
@@ -80,10 +84,3 @@ while user_input != "n":
     eventPlanner(assignment, int(event_time))
     # homework.update({assignment: [homeworktime]})
     user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not 
-    
-for key in schedule:
-    if schedule[key]=="":
-        print("For hour " + str(key) + " you have free time.")    
-    else:
-        print("For hour " + str(key) + ": " + "you will be doing " + schedule[key])
-
