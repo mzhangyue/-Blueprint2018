@@ -26,9 +26,19 @@ def activityPlanner(activity_name, amt_of_time, start_time): # Plans activity
         schedule[start_time] = activity_name
         amt_of_time -= 1'''
     print (schedule)
-
+'''
+If not enough time then return fail
+Analayze how much time between activities and assign homework
+'''
 def eventPlanner(event_name, amt_of_time):
-    
+    count_empty = 0
+    for hour in range(len(schedule)):
+        if schedule[hour] == "":
+            count_empty += 1
+    if amt_of_time > count_empty:
+        print("Do you have a time turner?")
+    else:
+        
     
 # Main method
 user_input = input("Do you want to enter an activity? y/n ")
@@ -53,4 +63,3 @@ while user_input != "n":
     eventPlanner(assignment, int(event_time))
     # homework.update({assignment: [homeworktime]})
     user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not 
-    
