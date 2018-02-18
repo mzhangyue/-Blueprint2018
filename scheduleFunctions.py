@@ -80,3 +80,10 @@ while user_input != "n":
     eventPlanner(assignment, int(event_time))
     # homework.update({assignment: [homeworktime]})
     user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not 
+    
+for key in schedule:
+    if schedule[key]=="":
+        print("For hour " + str(key) + " you have free time.")    
+    else:
+        print("For hour " + str(key) + ": " + "you will be doing " + schedule[key])
+
