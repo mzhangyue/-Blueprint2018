@@ -15,7 +15,6 @@ def activityPlanner(activity_name, amt_of_time, start_time):
         amt_of_time -= 1
     print (schedule)
     
-activities = {}
 user_input = input("Do you want to enter an activity? y/n ")
 while user_input != "n":
     activity_name = input("What is the name of your activity? ") # Sleep
@@ -23,9 +22,6 @@ while user_input != "n":
     start = input("When does it start? ") # Military time
     activityPlanner(activity_name, int(time), int(start))
     #interval = input("How many days between each activity? ") # In days
-    #activities.update({time: [activity_name, start, interval]})
- #   time_paradox_check(activities)
- #   activities.update({start: [activity_name, time]})
     user_input = input("Do you want to enter an activity? y/n ")
     
 '''for start_time in activities:
