@@ -88,7 +88,39 @@ def eventPlanner(event_name, amt_of_time):
                     amt_of_time -= 1
                 count += 1
         print(schedule)
-    
+
+def due_eventPlanner(event_name, amt_of_time, due_date):
+    count_empty = 0
+    for hour in range(24*due_date):
+        if schedule[hour] == "":
+            count_empty += 1
+    if amt_of_time > count_empty:
+        print("Do you have a time turner?")
+    else:
+        count = 0
+        first_hour = -1
+        for hour in range(7*due_date):
+            if schedule[hour] == "":
+                count += 1
+            else:
+                count = 0
+            if count == amt_of_time:
+                first_hour = hour-amt_of_time+1
+                break
+        # activityPlanner(event_name, amt_of_time, first_hour)
+        if first_hour != -1:
+            for i in range(amt_of_time):
+                schedule[first_hour] = event_name
+                first_hour += 1
+        else:
+            count = 0
+            while amt_of_time > 0:
+                if schedule[count] == "":
+                    schedule[count] = event_name
+                    amt_of_time -= 1
+                count += 1
+        print(schedule)
+        
 # Main method
 user_input = input("Do you want to enter an activity? y/n ")
 while user_input != "n":
@@ -108,20 +140,28 @@ while user_input != "n":
             repeated_activityPlanner(activity_name, int(time), int(start), int(start_day), int(repeat_interval))
         else:
             print("Say something I'm giving up on you")
-    #interval = input("How many days between each activity? ") # In days
-    #activities.update({time: [activity_name, start, interval]})
- #   time_paradox_check(activities)
- #   activities.update({start: [activity_name, time]})
     user_input = input("Do you want to enter an activity? y/n ")
+    
 
+    
+# Events
+print("Put events in order of due date priority for best arrangement")
 user_input = input("Do you have any events to plan? y/n ")
 while user_input != "n":
     assignment = input("Please say which event you need to add. ") #adding assignment name
     event_time = input("Please say how many hours the event takes. ") #setting the time it takes
-    if assignment != "" and event_time.isdigit():
-        eventPlanner(assignment, int(event_time))
+    due = input("Does it have a due date? ")
+    if due == "n":
+        if assignment != "" and event_time.isdigit():
+            eventPlanner(assignment, int(event_time))
+        else:
+            print("Say something I'm giving up on you")
     else:
-        print("Say something I'm giving up on you")
+        due_date = input("What day is it due? ")
+        if assignment != "" and event_time.isdigit() and due_date.isdigit() and int(due_date) > 0 and int(due_date) < 8:
+            due_eventPlanner(assignment, int(event_time), int(due_date))
+        else:
+            print("Say something I'm giving up on you")
     # homework.update({assignment: [homeworktime]})
     user_input = input("Do you have any more homework assignments? y/n ") #sees whether to loop back or not
 
