@@ -1,4 +1,4 @@
-chedule = []
+schedule = []
 for hour in range(24):
     schedule.append("")
 
